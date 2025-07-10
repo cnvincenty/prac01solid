@@ -8,5 +8,5 @@ import lombok.Setter;
 public class GrupoOTD {
     private Long id;
     private String codigo;
-    private String grupo;
+    private String nombre;
 }

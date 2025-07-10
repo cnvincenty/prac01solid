@@ -10,18 +10,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "grupo")
+@Table(name = "proveedor")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Grupo {
-
+public class Proveedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String codigo;
-
     private String nombre;
-
 }

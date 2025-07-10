@@ -43,7 +43,7 @@ public class GrupoServicioImplementacion implements GrupoServicio{
     public GrupoOTD actualizar(Long id, GrupoOTD otd) {
         Grupo entrada = repositorio.findById(id).orElseThrow(() -> new RecursoNoEncontradoException("No encontrado"));
         entrada.setCodigo(otd.getCodigo());
-        entrada.setGrupo(otd.getGrupo());
+        entrada.setNombre(otd.getNombre());
         return mapeador.aOtd(repositorio.save(entrada));
     }
 

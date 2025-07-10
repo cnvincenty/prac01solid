@@ -12,7 +12,7 @@ public class GrupoMapeador {
         GrupoOTD otd = new GrupoOTD();
         otd.setId(entidad.getId());
         otd.setCodigo(entidad.getCodigo());
-        otd.setGrupo(entidad.getGrupo());
+        otd.setNombre(entidad.getNombre());
         return otd;
     }
 
@@ -20,7 +20,7 @@ public class GrupoMapeador {
         Grupo entidad = new Grupo();
         entidad.setId(otd.getId());
         entidad.setCodigo(otd.getCodigo());
-        entidad.setGrupo(otd.getGrupo());
+        entidad.setNombre(otd.getNombre());
         return entidad;
     }
 }
