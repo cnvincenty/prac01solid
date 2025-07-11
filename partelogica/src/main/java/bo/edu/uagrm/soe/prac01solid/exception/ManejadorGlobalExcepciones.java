@@ -1,12 +1,10 @@
-package bo.edu.uagrm.soe.prac01solid.controller;
+package bo.edu.uagrm.soe.prac01solid.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
-
-import bo.edu.uagrm.soe.prac01solid.exception.RecursoNoEncontradoException;
 
 @ControllerAdvice
 public class ManejadorGlobalExcepciones {
