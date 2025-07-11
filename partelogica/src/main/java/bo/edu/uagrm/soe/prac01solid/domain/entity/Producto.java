@@ -1,4 +1,4 @@
-package bo.edu.uagrm.soe.prac01solid.dominio.entidad;
+package bo.edu.uagrm.soe.prac01solid.domain.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

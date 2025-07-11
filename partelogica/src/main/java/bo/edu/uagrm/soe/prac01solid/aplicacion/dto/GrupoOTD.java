@@ -1,4 +1,4 @@
-package bo.edu.uagrm.soe.prac01solid.aplicacion.otd;
+package bo.edu.uagrm.soe.prac01solid.aplicacion.dto;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,6 @@
-package bo.edu.uagrm.soe.prac01solid.dominio.entidad;
+package bo.edu.uagrm.soe.prac01solid.domain.entity;
+
+import java.math.BigDecimal;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,14 +12,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "proveedor")
+@Table(name = "precio")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Proveedor {
+public class Precio {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nombre;
+    private BigDecimal precioUnitario;
 }

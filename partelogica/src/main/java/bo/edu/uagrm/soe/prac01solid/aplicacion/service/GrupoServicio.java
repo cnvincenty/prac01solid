@@ -1,8 +1,8 @@
-package bo.edu.uagrm.soe.prac01solid.aplicacion.servicio;
+package bo.edu.uagrm.soe.prac01solid.aplicacion.service;
 
 import java.util.List;
 
-import bo.edu.uagrm.soe.prac01solid.aplicacion.otd.GrupoOTD;
+import bo.edu.uagrm.soe.prac01solid.aplicacion.dto.GrupoOTD;
 
 public interface GrupoServicio {
 

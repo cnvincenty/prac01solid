@@ -1,9 +1,9 @@
-package bo.edu.uagrm.soe.prac01solid.aplicacion.mapeador;
+package bo.edu.uagrm.soe.prac01solid.aplicacion.mappers;
 
 import org.springframework.stereotype.Component;
 
-import bo.edu.uagrm.soe.prac01solid.aplicacion.otd.GrupoOTD;
-import bo.edu.uagrm.soe.prac01solid.dominio.entidad.Grupo;
+import bo.edu.uagrm.soe.prac01solid.aplicacion.dto.GrupoOTD;
+import bo.edu.uagrm.soe.prac01solid.domain.entity.Grupo;
 
 @Component
 public class GrupoMapeador {

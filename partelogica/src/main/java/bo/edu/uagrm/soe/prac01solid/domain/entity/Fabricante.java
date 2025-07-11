@@ -1,4 +1,4 @@
-package bo.edu.uagrm.soe.prac01solid.dominio.entidad;
+package bo.edu.uagrm.soe.prac01solid.domain.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,18 +10,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "grupo")
+@Table(name = "fabricante")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Grupo {
-
+public class Fabricante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String codigo;
-
     private String nombre;
-
 }

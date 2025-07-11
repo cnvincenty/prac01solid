@@ -1,4 +1,4 @@
-package bo.edu.uagrm.soe.prac01solid.comun;
+package bo.edu.uagrm.soe.prac01solid.exception;
 
 public class RecursoNoEncontradoException extends RuntimeException {
 

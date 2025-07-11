@@ -1,15 +1,15 @@
-package bo.edu.uagrm.soe.prac01solid.aplicacion.servicio.implementacion;
+package bo.edu.uagrm.soe.prac01solid.aplicacion.service.implementacion;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import bo.edu.uagrm.soe.prac01solid.aplicacion.mapeador.GrupoMapeador;
-import bo.edu.uagrm.soe.prac01solid.aplicacion.otd.GrupoOTD;
-import bo.edu.uagrm.soe.prac01solid.aplicacion.servicio.GrupoServicio;
-import bo.edu.uagrm.soe.prac01solid.comun.RecursoNoEncontradoException;
-import bo.edu.uagrm.soe.prac01solid.dominio.entidad.Grupo;
-import bo.edu.uagrm.soe.prac01solid.ingraestructura.persistencia.GrupoRepositorio;
+import bo.edu.uagrm.soe.prac01solid.aplicacion.mappers.GrupoMapeador;
+import bo.edu.uagrm.soe.prac01solid.aplicacion.dto.GrupoOTD;
+import bo.edu.uagrm.soe.prac01solid.aplicacion.service.GrupoServicio;
+import bo.edu.uagrm.soe.prac01solid.exception.RecursoNoEncontradoException;
+import bo.edu.uagrm.soe.prac01solid.domain.entity.Grupo;
+import bo.edu.uagrm.soe.prac01solid.domain.repository.GrupoRepositorio;
 
 @Service
 public class GrupoServicioImplementacion implements GrupoServicio{

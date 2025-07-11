@@ -1,4 +1,4 @@
-package bo.edu.uagrm.soe.prac01solid.api.controlador;
+package bo.edu.uagrm.soe.prac01solid.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import bo.edu.uagrm.soe.prac01solid.aplicacion.otd.GrupoOTD;
-import bo.edu.uagrm.soe.prac01solid.aplicacion.servicio.GrupoServicio;
+import bo.edu.uagrm.soe.prac01solid.aplicacion.dto.GrupoOTD;
+import bo.edu.uagrm.soe.prac01solid.aplicacion.service.GrupoServicio;
 
 @RestController
 @RequestMapping("/api/v1/grupo")
