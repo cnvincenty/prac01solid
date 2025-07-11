@@ -1,1 +1,120 @@
-<p>producto.component works!</p>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/"><i class="bi bi-speedometer"></i> Inicio</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><i class="bi bi-box-seam"></i> Producto</li>
+  </ol>
+</nav>
+
+<div class="container py-4">
+  <h2>Gestión de Productos</h2>
+
+  <button class="btn btn-primary mb-3" (click)="abrirNuevo()">
+    <i class="bi bi-plus-lg"></i> Nuevo Producto
+  </button>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Nombre</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let g of productos">
+        <td class="text-center">{{ g.id }}</td>
+        <td class="text-left">{{ g.nombre }}</td>
+        <td class="text-center">
+          <button class="btn btn-sm btn-warning me-2" (click)="editar(g)">
+            <i class="bi bi-pencil-square"></i> Editar
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="eliminar(g.id!)">
+            <i class="bi bi-trash"></i> Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal -->
+  <div class="modal fade" id="productoModal" tabindex="-1" aria-labelledby="productoModalLabel" aria-hidden="true" #modalProducto>
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <form (ngSubmit)="guardar()" #productoForm="ngForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="productoModalLabel">
+              {{ editando ? 'Editar Producto' : 'Nuevo Producto' }}
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="reset()"></button>
+          </div>
+          <div class="modal-body row g-3">
+
+            <div class="col-md-12">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="producto.nombre" required />
+            </div>
+
+            <div class="col-md-12">
+              <label for="nombreExtranjero" class="form-label">Nombre Extranjero</label>
+              <input type="text" class="form-control" id="nombreExtranjero" name="nombreExtranjero" [(ngModel)]="producto.nombreExtranjero" />
+            </div>
+
+            <div class="col-md-6">
+              <label for="codBarra" class="form-label">Código de Barra</label>
+              <input type="text" class="form-control" id="codBarra" name="codBarra" [(ngModel)]="producto.codBarra" />
+            </div>
+
+            <div class="col-md-6">
+              <label for="codAlternativo" class="form-label">Código Alternativo</label>
+              <input type="text" class="form-control" id="codAlternativo" name="codAlternativo" [(ngModel)]="producto.codAlternativo" />
+            </div>
+
+            <div class="col-md-3">
+              <label for="peso" class="form-label">Peso</label>
+              <input type="number" class="form-control" id="peso" name="peso" [(ngModel)]="producto.peso" step="0.01" />
+            </div>
+
+            <div class="col-md-3">
+              <label for="unidadMedida" class="form-label">Unidad de Medida</label>
+              <input type="text" class="form-control" id="unidadMedida" name="unidadMedida" [(ngModel)]="producto.unidadMedida" />
+            </div>
+
+            <div class="col-md-3">
+              <label for="precio" class="form-label">Precio</label>
+              <input type="number" class="form-control" id="precio" name="precio" [(ngModel)]="producto.precio" step="0.01" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Grupo</label>
+              <select class="form-select" [(ngModel)]="producto.grupoId" name="grupoId" required>
+                <option [ngValue]="null">Seleccione...</option>
+                <option *ngFor="let grupo of grupos" [ngValue]="grupo.id">{{ grupo.nombre }}</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Fabricante</label>
+              <select class="form-select" [(ngModel)]="producto.fabricanteId" name="fabricanteId" required>
+                <option [ngValue]="null">Seleccione...</option>
+                <option *ngFor="let f of fabricantes" [ngValue]="f.id">{{ f.nombre }}</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Proveedor</label>
+              <select class="form-select" [(ngModel)]="producto.proveedorId" name="proveedorId" required>
+                <option [ngValue]="null">Seleccione...</option>
+                <option *ngFor="let p of proveedores" [ngValue]="p.id">{{ p.nombre }}</option>
+              </select>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Cancelar</button>
+            <button type="submit" class="btn btn-primary">{{ editando ? 'Actualizar' : 'Guardar' }}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
