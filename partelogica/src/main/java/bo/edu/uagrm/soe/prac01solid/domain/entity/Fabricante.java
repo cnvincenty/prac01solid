@@ -15,9 +15,6 @@ public class Fabricante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "sku", length = 50)
-    private String sku;
-    
     @Column(name = "nombre", length = 100, nullable = false)
     private String nombre;
 }
