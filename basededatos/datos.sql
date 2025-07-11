@@ -1,4 +1,4 @@
-insert into grupo(codigo,grupo) values
+insert into grupo(codigo,nombre) values
 ('GRP-001', 'Electrónica'),
 ('GRP-002', 'Computación'),
 ('GRP-003', 'Hogar y Cocina'),
