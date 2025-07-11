@@ -71,3 +71,29 @@ release.properties
 dependency-reduced-pom.xml
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.properties
+
+### Terraform ###
+terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform/
+.terraform.lock.hcl
+terraform.tfplan
+terraform.tfplan.json
+
+### SSH Keys ###
+*.pem
+*.ppk
+~/.ssh/prac01solid-key*
+
+### AWS ###
+.aws/
+aws-credentials
+
+### Environment ###
+.env
+.env.local
+.env.development
+.env.test
+.env.production
