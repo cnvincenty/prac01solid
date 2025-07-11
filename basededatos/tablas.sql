@@ -17,7 +17,7 @@ create table precio(
     nombre varchar default ''
 );
 
-create table precio(
+create table proveedor(
     id serial not null primary key,
     nombre varchar default ''
 );

@@ -11,8 +11,9 @@ import bo.edu.uagrm.soe.prac01solid.aplicacion.service.ProveedorServicio;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/proveedores")
+@RequestMapping("/api/v1/proveedor")
 @Tag(name = "Proveedores", description = "Gestión de proveedores")
+@CrossOrigin
 public class ProveedorControlador {
 
     private final ProveedorServicio proveedorServicio;

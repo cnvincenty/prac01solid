@@ -41,9 +41,9 @@ public class ProveedorServicioImplementacion implements ProveedorServicio {
     public ProveedorDTO actualizar(Long id, ProveedorDTO dto) {
         Proveedor proveedor = repositorio.findById(id)
             .orElseThrow(() -> new RecursoNoEncontradoException("Proveedor no encontrado"));
-        
+
         proveedor.setNombre(dto.getNombre());
-        
+
         return convertirADTO(repositorio.save(proveedor));
     }
 

@@ -20,14 +20,14 @@ public class FabricanteServicioImplementacion implements FabricanteServicio {
     @Override
     public List<FabricanteDTO> obtenerTodos() {
         return repositorio.findAll().stream()
-            .map(this::convertirADTO)
-            .toList();
+                .map(this::convertirADTO)
+                .toList();
     }
 
     @Override
     public FabricanteDTO obtenerPorId(Long id) {
         Fabricante fabricante = repositorio.findById(id)
-            .orElseThrow(() -> new RecursoNoEncontradoException("Fabricante no encontrado"));
+                .orElseThrow(() -> new RecursoNoEncontradoException("Fabricante no encontrado"));
         return convertirADTO(fabricante);
     }
 
@@ -40,10 +40,10 @@ public class FabricanteServicioImplementacion implements FabricanteServicio {
     @Override
     public FabricanteDTO actualizar(Long id, FabricanteDTO dto) {
         Fabricante fabricante = repositorio.findById(id)
-            .orElseThrow(() -> new RecursoNoEncontradoException("Fabricante no encontrado"));
-        
+                .orElseThrow(() -> new RecursoNoEncontradoException("Fabricante no encontrado"));
+
         fabricante.setNombre(dto.getNombre());
-        
+
         return convertirADTO(repositorio.save(fabricante));
     }
 

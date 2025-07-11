@@ -11,8 +11,9 @@ import bo.edu.uagrm.soe.prac01solid.aplicacion.service.ProductoServicio;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/productos")
+@RequestMapping("/api/v1/producto")
 @Tag(name = "Productos", description = "Gestión de productos")
+@CrossOrigin
 public class ProductoControlador {
 
     private final ProductoServicio productoServicio;

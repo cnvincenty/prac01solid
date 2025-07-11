@@ -11,8 +11,9 @@ import bo.edu.uagrm.soe.prac01solid.aplicacion.service.FabricanteServicio;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/fabricantes")
+@RequestMapping("/api/v1/fabricante")
 @Tag(name = "Fabricantes", description = "Gestión de fabricantes")
+@CrossOrigin
 public class FabricanteControlador {
 
     private final FabricanteServicio fabricanteServicio;

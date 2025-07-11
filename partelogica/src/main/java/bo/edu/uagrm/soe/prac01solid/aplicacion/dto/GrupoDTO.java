@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GrupoOTD {
+public class GrupoDTO {
     private Long id;
     private String codigo;
     private String nombre;

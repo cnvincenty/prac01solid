@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import bo.edu.uagrm.soe.prac01solid.aplicacion.dto.GrupoDTO;
 import bo.edu.uagrm.soe.prac01solid.aplicacion.mappers.GrupoMapeador;
-import bo.edu.uagrm.soe.prac01solid.aplicacion.dto.GrupoOTD;
 import bo.edu.uagrm.soe.prac01solid.aplicacion.service.GrupoServicio;
-import bo.edu.uagrm.soe.prac01solid.exception.RecursoNoEncontradoException;
 import bo.edu.uagrm.soe.prac01solid.domain.entity.Grupo;
 import bo.edu.uagrm.soe.prac01solid.domain.repository.GrupoRepositorio;
+import bo.edu.uagrm.soe.prac01solid.exception.RecursoNoEncontradoException;
 
 @Service
-public class GrupoServicioImplementacion implements GrupoServicio{
+public class GrupoServicioImplementacion implements GrupoServicio {
 
     private final GrupoRepositorio repositorio;
 
@@ -24,23 +24,24 @@ public class GrupoServicioImplementacion implements GrupoServicio{
     }
 
     @Override
-    public List<GrupoOTD> obtenerTodos() {
+    public List<GrupoDTO> obtenerTodos() {
         return repositorio.findAll().stream().map(mapeador::aOtd).toList();
     }
 
     @Override
-    public GrupoOTD obtenerPorId(Long id) {
-        return mapeador.aOtd(repositorio.findById(id).orElseThrow(() -> new RecursoNoEncontradoException("No encontrado")));
+    public GrupoDTO obtenerPorId(Long id) {
+        return mapeador
+                .aOtd(repositorio.findById(id).orElseThrow(() -> new RecursoNoEncontradoException("No encontrado")));
     }
 
     @Override
-    public GrupoOTD crear(GrupoOTD otd) {
+    public GrupoDTO crear(GrupoDTO otd) {
         Grupo entrada = mapeador.aEntidad(otd);
         return mapeador.aOtd(repositorio.save(entrada));
     }
 
     @Override
-    public GrupoOTD actualizar(Long id, GrupoOTD otd) {
+    public GrupoDTO actualizar(Long id, GrupoDTO otd) {
         Grupo entrada = repositorio.findById(id).orElseThrow(() -> new RecursoNoEncontradoException("No encontrado"));
         entrada.setCodigo(otd.getCodigo());
         entrada.setNombre(otd.getNombre());
