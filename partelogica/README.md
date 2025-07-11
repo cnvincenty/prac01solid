@@ -1,60 +1,142 @@
-# Practica 01 SOLID
+# Sistema de Gestión de Productos - Aplicando Principios SOLID
+
 ## Grupo C
-Ing. Joaquin Gonzales Mosquera
-Ing. Edson Mancilla Rodriguez
-Ing. Juan Jose Miranda Mendoza
-Ing. Milena Mollinedo Franco
-Ing. César Nilton Vincenty Funes
+- Ing. Joaquin Gonzales Mosquera
+- Ing. Edson Mancilla Rodriguez  
+- Ing. Juan Jose Miranda Mendoza
+- Ing. Milena Mollinedo Franco
+- Ing. César Nilton Vincenty Funes
 
-## Problema
-* Desarrollar una aplicación Escritorio/Web para poder registrar los datos maestro de un producto. Donde los campos mínimos son lo definido en la clase base de ejemplo. Aplique los principios SOLID.
-* Aplicar programación en capas.
-* Deben realizar una presentación donde mencione en que parte utilizaron los principios SOLID y exponer.
+## Descripción del Proyecto
+
+API REST desarrollada en **Spring Boot** para la gestión de productos, aplicando los principios SOLID y arquitectura por capas. El sistema permite registrar y administrar productos con sus respectivos fabricantes, proveedores y grupos.
+
+## Tecnologías Utilizadas
+
+- **Backend**: Spring Boot 3.5.3, Java 17
+- **Base de Datos**: MySQL 8.0
+- **Documentación**: OpenAPI/Swagger
+- **Infraestructura**: AWS (EC2, RDS) con Terraform
+- **Build Tool**: Maven
+
+## Arquitectura por Capas
 
 ```
-class Producto {
-    private string cSku;
-    private string cNombre;
-    private string cNombreExtranjero;
-    private string cCodGrupoProducto;
-    private string cNombreGrupoProducto;
-    private string cSkuFabricante;
-    private string cNmbFabricante;
-    private string cNmbProveedor;
-    private decimal nPeso;
-    private string cUM;
-    private decimal nPrecioLista;
-    private string cCodBarra;
-    private string cSkuAlternante;
-    public string CSku { get => cSku; set => cSku = value; }
-    public string CNombre { get => cNombre; set => cNombre = value; }
-    public string CSkuFabricante { get => cSkuFabricante; set => cSkuFabricante = value; }
-    public string CNmbFabricante { get => cNmbFabricante; set => cNmbFabricante = value; }
-    public string CNmbProveedor { get => cNmbProveedor; set => cNmbProveedor = value; }
-    public decimal NPeso { get => nPeso; set => nPeso = value; }
-    public string CUM { get => cUM; set => cUM = value; }
-    public decimal NPrecioLista { get => nPrecioLista; set => nPrecioLista = value; }
-    public string CCodBarra { get => cCodBarra; set => cCodBarra = value; }
-    public string CSkuAlternante { get => cSkuAlternante; set => cSkuAlternante = value; }
-    private Array GetSkuAlternante(string cSkuBase)
-    {
-    string[] aSkuAlternate = { "", "" };
-    return aSkuAlternate;
-    }
-    public void RegistrarGrupoProduco() { }
-    public void RegistrarProducto() { }
-    public void RegistrarProveedorProducto(){ }
-    public void RegistrarPrecioBaseProducto(){ }
-    public void RegistrarMinimoMaximoMRPAlmacen(){ }
-}
+├── Controller Layer    (Controladores REST)
+├── Service Layer      (Lógica de negocio)
+├── Repository Layer   (Acceso a datos)
+└── Domain Layer       (Entidades y DTOs)
 ```
 
-## Estilo de arquitectura por capas
+## Aplicación de Principios SOLID
 
-## SOLID
+### **S - Single Responsibility Principle (SRP)**
+- **Entidades separadas**: `Producto`, `Fabricante`, `Proveedor`, `Grupo`
+- **Servicios específicos**: Cada servicio maneja una sola entidad
+- **Controladores dedicados**: Un controlador por recurso
 
-S (Principio de Responsabilidad Única)
+### **O - Open/Closed Principle (OCP)**
+- **Interfaces de servicio**: Extensibles sin modificar código existente
+- **Spring Data JPA**: Repositorios extensibles automáticamente
 
-Aplicando:
-Producto(cCodGrupoProducto, cNombreGrupoProducto) => Grupo(codigo, grupo)
+### **L - Liskov Substitution Principle (LSP)**
+- **Implementaciones intercambiables**: Las implementaciones de servicio pueden sustituirse
+- **Polimorfismo**: Uso de interfaces en lugar de clases concretas
 
+### **I - Interface Segregation Principle (ISP)**
+- **Interfaces específicas**: Cada servicio tiene su propia interfaz
+- **DTOs especializados**: Objetos de transferencia específicos por entidad
+
+### **D - Dependency Inversion Principle (DIP)**
+- **Inyección de dependencias**: Spring maneja todas las dependencias
+- **Abstracciones**: Dependencia de interfaces, no implementaciones
+
+## Mapeo de Campos (Consigna Original → Implementación)
+
+| Campo Original | Implementación |
+|---|---|
+| `cSku` | `id` (Long, auto-generado) |
+| `cNombre` | `nombre` |
+| `cNombreExtranjero` | `nombreExtranjero` |
+| `cCodGrupoProducto` + `cNombreGrupoProducto` | `Grupo` (entidad separada) |
+| `cSkuFabricante` + `cNmbFabricante` | `Fabricante` (entidad separada) |
+| `cNmbProveedor` | `Proveedor` (entidad separada) |
+| `nPeso` | `peso` |
+| `cUM` | `unidadMedida` |
+| `nPrecioLista` | `precio` (BigDecimal) |
+| `cCodBarra` | `codBarra` |
+| `cSkuAlternante` | `codAlternativo` |
+
+## Endpoints API
+
+### Productos
+- `GET /api/productos` - Listar productos
+- `POST /api/productos` - Crear producto
+- `GET /api/productos/{id}` - Obtener producto
+- `PUT /api/productos/{id}` - Actualizar producto
+- `DELETE /api/productos/{id}` - Eliminar producto
+
+### Fabricantes, Proveedores, Grupos
+- Misma estructura CRUD para cada entidad
+- Endpoints: `/api/fabricantes`, `/api/proveedores`, `/api/grupos`
+
+## Ejecución Local
+
+```bash
+# Clonar repositorio
+git clone <repo-url>
+cd partelogica
+
+# Configurar MySQL
+# Editar src/main/resources/application.properties
+
+# Ejecutar aplicación
+mvn spring-boot:run
+```
+
+**URLs disponibles:**
+- API: http://localhost:8080
+- Swagger UI: http://localhost:8080/swagger-ui.html
+- API Docs: http://localhost:8080/api-docs
+
+## Despliegue en AWS
+
+Infraestructura automatizada con **Terraform**:
+
+```bash
+cd terraform
+cp terraform.tfvars.example terraform.tfvars
+# Editar terraform.tfvars
+terraform init
+terraform apply
+```
+
+**Recursos creados:**
+- EC2 t2.micro (aplicación)
+- RDS MySQL t3.micro (base de datos)
+- VPC con subnets públicas/privadas
+- Security Groups configurados
+
+## Estructura del Proyecto
+
+```
+src/main/java/bo/edu/uagrm/soe/prac01solid/
+├── aplicacion/
+│   ├── dto/           # Data Transfer Objects
+│   ├── mappers/       # Conversores DTO ↔ Entity
+│   └── service/       # Interfaces y servicios
+├── controller/        # Controladores REST
+├── domain/
+│   ├── entity/        # Entidades JPA
+│   └── repository/    # Repositorios Spring Data
+├── config/           # Configuraciones
+└── exception/        # Manejo de excepciones
+```
+
+## Beneficios de la Implementación
+
+✅ **Mantenibilidad**: Código organizado y fácil de modificar
+✅ **Escalabilidad**: Arquitectura preparada para crecimiento
+✅ **Testabilidad**: Dependencias inyectadas facilitan testing
+✅ **Documentación**: API autodocumentada con Swagger
+✅ **Despliegue**: Infraestructura como código con Terraform
