@@ -9,7 +9,7 @@ import { Fabricante } from '../dominio/fabricante';
 })
 export class FabricanteService {
 
-  private readonly url = `${environment.apiUrl}/v1/fabricante`;
+  private readonly url = `${environment.apiUrl}/fabricantes`;
 
   constructor(private httpCliente: HttpClient) {}
 

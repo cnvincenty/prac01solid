@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductoService {
 
-  private readonly url = `${environment.apiUrl}/v1/producto`;
+  private readonly url = `${environment.apiUrl}/productos`;
 
   constructor(private httpCliente: HttpClient) {}
 
